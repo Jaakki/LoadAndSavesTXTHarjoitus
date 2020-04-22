@@ -34,7 +34,7 @@ namespace LoadAndSavesTXTHarjoitus
                     return true;
                 case "4":
                     var load = new FileHandler();
-                    load.LoadData(load.filePath);
+                    load.LoadDataFromFile(load.filePath, load.thisFile);
                     return true;
                 case "5":
                     return false;

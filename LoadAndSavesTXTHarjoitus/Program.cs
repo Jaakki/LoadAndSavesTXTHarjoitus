@@ -7,6 +7,10 @@ namespace LoadAndSavesTXTHarjoitus
     {
         static void Main(string[] args)
         {
+            FileHandler fh = new FileHandler();
+            fh.currentPath = @"G:\Diginikkarit\Harjoitusfiluja\LoadAndSaveTXT\";
+            fh.currentFile = @"TestData.txt";
+
             bool showMenu = true;
             while (showMenu)
             {

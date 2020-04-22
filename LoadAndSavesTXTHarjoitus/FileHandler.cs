@@ -8,8 +8,12 @@ namespace LoadAndSavesTXTHarjoitus
 {
     public class FileHandler
     {
-        public string filePath = @"G:\Diginikkarit\Harjoitusfiluja\LoadAndSaveTXT\TestData.txt";
+        public string filePath = @"G:\Diginikkarit\Harjoitusfiluja\LoadAndSaveTXT\";
+        public string thisFile = @"TestData.txt";
         public List<string> lines = new List<string>();
+
+        public string currentPath { get; set; }
+        public string currentFile { get; set; }
 
         public void SaveToFiles(List<string> lines)
         {
@@ -55,10 +59,35 @@ namespace LoadAndSavesTXTHarjoitus
             WriteLineToFile(lines);
         }
 
-        public List<string> LoadData(string filePath)
+        public List<string> LoadDataFromFile(string filePath, string thisFile)
         {
-            LoadFromFiles(filePath);
+            LoadFromFiles(filePath+thisFile);
             return lines;
+        }
+
+        public Player StringToPlayer(string thisFile)
+        {
+            Player player = new Player();
+            foreach (var line in lines)
+            {
+                string[] entries = line.Split(",");
+                player.Name = entries[0];
+                player.EXP = Convert.ToInt32(entries[1]);
+                player.Gold = Convert.ToInt32(entries[2]);
+                player.IsAlive = Convert.ToBoolean(entries[3]);
+                
+            }
+            return player;
+        }
+
+        public string GetCurrentFilePath(string currentPath, string currentFile)
+        {
+            return currentPath + currentFile;
+        }
+
+        public void LoadPlayerDataFromCurrentFile()
+        {
+
         }
     }
 }
