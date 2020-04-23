@@ -8,16 +8,36 @@ namespace LoadAndSavesTXTHarjoitus
 {
     public class FileHandler
     {
-        public string filePath = @"G:\Diginikkarit\Harjoitusfiluja\LoadAndSaveTXT\";
-        public string thisFile = @"TestData.txt";
+        //public string filePath = @"G:\Diginikkarit\Harjoitusfiluja\LoadAndSaveTXT\TestData.txt";
+        //public string thisFile = @"TestData.txt";
         public List<string> lines = new List<string>();
 
-        public string currentPath { get; set; }
-        public string currentFile { get; set; }
+        //public string currentPath { get; set; }
+        //public string currentFile { get; set; }
+
+
+
+        private string curPath;
+
+        public string currentPath
+        {
+            get { return curPath; }
+            set { curPath = value; }
+        }
+
+        private string curFile;
+
+        public string currentFile
+        {
+            get { return curFile; }
+            set { curFile = value; }
+        }
+
+
 
         public void SaveToFiles(List<string> lines)
         {
-            File.WriteAllLines(filePath, lines);
+            File.WriteAllLines(GetCurrentFilePath(), lines);
         }
 
         public void LoadFromFiles(string file)
@@ -59,9 +79,9 @@ namespace LoadAndSavesTXTHarjoitus
             WriteLineToFile(lines);
         }
 
-        public List<string> LoadDataFromFile(string filePath, string thisFile)
+        public List<string> LoadDataFromFile(string file)
         {
-            LoadFromFiles(filePath+thisFile);
+            LoadFromFiles(file);
             return lines;
         }
 
@@ -75,19 +95,24 @@ namespace LoadAndSavesTXTHarjoitus
                 player.EXP = Convert.ToInt32(entries[1]);
                 player.Gold = Convert.ToInt32(entries[2]);
                 player.IsAlive = Convert.ToBoolean(entries[3]);
-                
             }
             return player;
         }
 
-        public string GetCurrentFilePath(string currentPath, string currentFile)
+        public string GetCurrentFilePath()
         {
             return currentPath + currentFile;
         }
 
-        public void LoadPlayerDataFromCurrentFile()
+        public List<Player> LoadPlayerDataFromCurrentFile()
         {
-
+            List<string> rows = LoadDataFromFile(GetCurrentFilePath());
+            List<Player> players = new List<Player>();
+            foreach (var row in rows)
+            {
+                players.Add(StringToPlayer(row));
+            }
+            return players;
         }
     }
 }

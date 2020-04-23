@@ -11,7 +11,7 @@ namespace LoadAndSavesTXTHarjoitus
         public bool IsAlive { get; set; }
         public int Gold { get; set; }
 
-        public static Player CreatePlayer()
+        public static Player CreatePlayer()                                 //give values to a player object, then return player
         {
             Player player = new Player();
             Console.WriteLine("Character name: ");
@@ -24,7 +24,7 @@ namespace LoadAndSavesTXTHarjoitus
             return player;
         }
 
-        public static void DisplayPlayers(List<Player> players)
+        public static void DisplayPlayers(List<Player> players)             //prints player info in this format
         {
             foreach (Player player in players)
             {

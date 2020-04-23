@@ -11,10 +11,13 @@ namespace LoadAndSavesTXTHarjoitus
             fh.currentPath = @"G:\Diginikkarit\Harjoitusfiluja\LoadAndSaveTXT\";
             fh.currentFile = @"TestData.txt";
 
+            //string juttu = fh.GetCurrentFilePath();
+            //string asia = fh.filePath;
+
             bool showMenu = true;
             while (showMenu)
             {
-                showMenu = Menu.MainMenu();
+                showMenu = Menu.MainMenu(fh);
             }
         }
     }
