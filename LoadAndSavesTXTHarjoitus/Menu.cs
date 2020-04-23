@@ -11,7 +11,7 @@ namespace LoadAndSavesTXTHarjoitus
         public static List<Player> players = new List<Player>();
         public static bool MainMenu(FileHandler fh)
         {
-            BackToMenu:
+            
             Console.Clear();
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1) Create new player");
