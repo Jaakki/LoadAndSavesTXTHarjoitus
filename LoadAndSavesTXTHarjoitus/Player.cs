@@ -11,15 +11,36 @@ namespace LoadAndSavesTXTHarjoitus
         public bool IsAlive { get; set; }
         public int Gold { get; set; }
 
+        
+
         public static Player CreatePlayer()                                 //give values to a player object, then return player
         {
+            int invalidInt;
+            string validateString;
             Player player = new Player();
             Console.WriteLine("Character name: ");
             player.Name = Console.ReadLine();
+            while (string.IsNullOrEmpty(player.Name))
+            {
+                Console.WriteLine("Invalid name given!\nEnter a new name:");
+                player.Name = Console.ReadLine();
+            }
             Console.WriteLine("Starting experience: ");
-            player.EXP = Convert.ToInt32(Console.ReadLine());
+            validateString = (Console.ReadLine()+0);
+            while (!int.TryParse(validateString, out invalidInt))
+            {
+                Console.WriteLine("Invalid value!\nEnter a new value:");
+                validateString = Console.ReadLine();
+            }
+            player.EXP = Convert.ToInt32(validateString);
             Console.WriteLine("Starting gold: ");
-            player.Gold = Convert.ToInt32(Console.ReadLine());
+            validateString = (Console.ReadLine() + 0);
+            while (!int.TryParse(validateString, out invalidInt))
+            {
+                Console.WriteLine("Invalid value!\nEnter a new value:");
+                validateString = Console.ReadLine();
+            }
+            player.Gold = Convert.ToInt32(validateString);
             player.IsAlive = true;
             return player;
         }

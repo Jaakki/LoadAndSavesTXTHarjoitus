@@ -8,14 +8,7 @@ namespace LoadAndSavesTXTHarjoitus
 {
     public class FileHandler
     {
-        //public string filePath = @"G:\Diginikkarit\Harjoitusfiluja\LoadAndSaveTXT\TestData.txt";
-        //public string thisFile = @"TestData.txt";
         public List<string> lines = new List<string>();
-
-        //public string currentPath { get; set; }
-        //public string currentFile { get; set; }
-
-
 
         private string curPath;
 
@@ -32,8 +25,6 @@ namespace LoadAndSavesTXTHarjoitus
             get { return curFile; }
             set { curFile = value; }
         }
-
-
 
         public void SaveToFiles(List<string> lines)
         {
