@@ -22,14 +22,14 @@ namespace LoadAndSavesTXTHarjoitus
             player.Name = Console.ReadLine();
             while (string.IsNullOrEmpty(player.Name))
             {
-                Console.WriteLine("Invalid name given!\nEnter a new name:");
+                Console.WriteLine("Invalid name given!\nEnter a new name or exit with 0");
                 player.Name = Console.ReadLine();
             }
             Console.WriteLine("Starting experience: ");
             validateString = (Console.ReadLine()+0);
             while (!int.TryParse(validateString, out invalidInt))
             {
-                Console.WriteLine("Invalid value!\nEnter a new value:");
+                Console.WriteLine("Invalid value!\nEnter a new value or exit with 0");
                 validateString = Console.ReadLine();
             }
             player.EXP = Convert.ToInt32(validateString);
@@ -37,7 +37,8 @@ namespace LoadAndSavesTXTHarjoitus
             validateString = (Console.ReadLine() + 0);
             while (!int.TryParse(validateString, out invalidInt))
             {
-                Console.WriteLine("Invalid value!\nEnter a new value:");
+                Console.WriteLine("Invalid value!\nEnter a new value or exit with 0");
+                Console.ReadKey() = ConsoleKey.D0;
                 validateString = Console.ReadLine();
             }
             player.Gold = Convert.ToInt32(validateString);
