@@ -25,12 +25,15 @@ namespace LoadAndSavesTXTHarjoitus
                 player.Name = Console.ReadLine();
                 while (string.IsNullOrEmpty(player.Name))
                 {
-                    Console.WriteLine("Invalid name given!\nEnter a new name or exit with 0");
-                    if (Console.ReadKey(false).Key == ConsoleKey.D0)
+                    Console.WriteLine("Invalid name given!\nPress any key to try again or exit with 0");
+                    if (Console.ReadKey(true).Key == ConsoleKey.D0)
                     {
                         return null;
                     }
-                    player.Name = Console.ReadLine();
+                    else
+                    {
+                        player.Name = Console.ReadLine(); 
+                    }
                 }
             }
             catch (Exception)
@@ -43,8 +46,8 @@ namespace LoadAndSavesTXTHarjoitus
             validateString = Console.ReadLine();
             while (!int.TryParse(validateString, out invalidInt))
             {
-                Console.WriteLine("Invalid value!\nEnter a new value or exit with 0");
-                if (Console.ReadKey(false).Key == ConsoleKey.D0)
+                Console.WriteLine("Invalid value!\nPress any key to try again or exit with 0");
+                if (Console.ReadKey(true).Key == ConsoleKey.D0)
                 {
                     return null;
                 }
@@ -55,8 +58,8 @@ namespace LoadAndSavesTXTHarjoitus
             validateString = Console.ReadLine();
             while (!int.TryParse(validateString, out invalidInt))
             {
-                Console.WriteLine("Invalid value!\nEnter a new value or exit with 0");
-                if (Console.ReadKey(false).Key == ConsoleKey.D0)
+                Console.WriteLine("Invalid value!\nPress any key to try again or exit with 0");
+                if (Console.ReadKey(true).Key == ConsoleKey.D0)
                 {
                     return null;
                 }

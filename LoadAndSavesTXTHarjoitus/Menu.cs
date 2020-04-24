@@ -24,7 +24,14 @@ namespace LoadAndSavesTXTHarjoitus
             {
                 case "1":
                     var player = Player.CreatePlayer();
-                    players.Add(player);
+                    if (player == null)
+                    {
+                        Console.WriteLine("Player info was not added, because player was empty!");
+                    }
+                    else
+                    {
+                        players.Add(player); 
+                    }
                     return true;
                 case "2":
                     Player.DisplayPlayers(players);
