@@ -27,6 +27,7 @@ namespace LoadAndSavesTXTHarjoitus
                     if (player == null)
                     {
                         Console.WriteLine("Player info was not added, because player was empty!");
+                        Console.ReadKey();
                     }
                     else
                     {
