@@ -16,9 +16,10 @@ namespace LoadAndSavesTXTHarjoitus
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1) Create new player");
             Console.WriteLine("2) See all players");
-            Console.WriteLine("3) Save player data to .txt");               //currently does not overwrite the existing data
-            Console.WriteLine("4) Load player data from .txt");
-            Console.WriteLine("5) Exit");
+            Console.WriteLine($"3) Save player data to {fh.currentFile}");               //currently does not overwrite the existing data
+            Console.WriteLine($"4) Load player data from {fh.currentFile}");
+            Console.WriteLine("5) Create a new file for players");
+            Console.WriteLine("6) Exit");
 
             switch (Console.ReadLine())
             {
@@ -44,6 +45,9 @@ namespace LoadAndSavesTXTHarjoitus
                     fh.LoadPlayerDataFromCurrentFile();
                     return true;
                 case "5":
+                    fh.ChangeCurrentFile();
+                    return true;
+                case "6":
                     return false;
                 default:
                     return true;

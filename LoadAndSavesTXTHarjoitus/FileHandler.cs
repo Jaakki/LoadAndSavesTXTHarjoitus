@@ -127,13 +127,38 @@ namespace LoadAndSavesTXTHarjoitus
 
         public List<Player> LoadPlayerDataFromCurrentFile()
         {
-            List<string> rows = LoadDataFromFile(GetCurrentFilePath());
-            List<Player> players = new List<Player>();
-            foreach (var row in rows)
+            try
             {
-                players.Add(StringToPlayer(row));
+                List<string> rows = LoadDataFromFile(GetCurrentFilePath());
+                List<Player> players = new List<Player>();
+                foreach (var row in rows)
+                {
+                    players.Add(StringToPlayer(row));
+                }
+                return players;
             }
-            return players;
+            catch (Exception)
+            {
+                Console.WriteLine($"Error, no players in {currentFile}");
+                Console.ReadKey();
+                return null;
+            }
+        }
+
+        public string ChangeCurrentFile()
+        {
+            do
+            {
+                if (currentFile == null)
+                {
+                    Console.WriteLine("Error, name can't be null!");
+                }
+                Console.WriteLine($"Current file path: {currentPath}");
+                Console.WriteLine($"Current file name: {currentFile}");
+                Console.WriteLine($"Create a new file name: ");             //new .txt where players will be saved
+                currentFile = (Console.ReadLine().ToLower().Trim()); 
+            } while (currentFile == null);
+            return currentFile;
         }
     }
 }

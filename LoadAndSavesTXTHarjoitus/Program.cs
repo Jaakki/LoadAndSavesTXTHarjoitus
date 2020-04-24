@@ -9,7 +9,7 @@ namespace LoadAndSavesTXTHarjoitus
         {
             FileHandler fh = new FileHandler();
             fh.currentPath = @"G:\Diginikkarit\Harjoitusfiluja\LoadAndSaveTXT\";
-            fh.currentFile = @"TestData.txt";
+            fh.currentFile = @"testdata.txt";
 
             //string juttu = fh.GetCurrentFilePath();
             //string asia = fh.filePath;
