@@ -43,8 +43,16 @@ namespace LoadAndSavesTXTHarjoitus
 
         public string PlayerToString(Player player)
         {
-            string playerString = Convert.ToString($"{player.Name},{player.Gold},{player.EXP},{player.IsAlive}");
-            return playerString;
+            if (player == null)
+            {
+                Console.WriteLine("Error, player was null!");
+                return null;
+            }
+            else
+            {
+                string playerString = Convert.ToString($"{player.Name},{player.Gold},{player.EXP},{player.IsAlive}");
+                return playerString; 
+            }
         }
 
         public void WriteLineToFile(List<string> lines)
@@ -56,7 +64,14 @@ namespace LoadAndSavesTXTHarjoitus
         {
             foreach (var player in players)
             {
-                lines.Add(PlayerToString(player));
+                if (player == null)
+                {
+                    Console.WriteLine("Error, player data was null!");
+                }
+                else
+                {
+                    lines.Add(PlayerToString(player)); 
+                }
             }
         }
 
@@ -64,7 +79,14 @@ namespace LoadAndSavesTXTHarjoitus
         {
             foreach (var player in players)
             {
-                PlayerToString(player); 
+                if (player == null)
+                {
+                    Console.WriteLine("Error, player data was null!");
+                }
+                else
+                {
+                    PlayerToString(player); 
+                } 
             }
             PlayersToLines(players);
             WriteLineToFile(lines);
@@ -81,11 +103,19 @@ namespace LoadAndSavesTXTHarjoitus
             Player player = new Player();
             foreach (var line in lines)
             {
-                string[] entries = line.Split(",");
-                player.Name = entries[0];
-                player.EXP = Convert.ToInt32(entries[1]);
-                player.Gold = Convert.ToInt32(entries[2]);
-                player.IsAlive = Convert.ToBoolean(entries[3]);
+                if (line == null)
+                {
+                    Console.WriteLine("Error, empty line!");
+                    return null;
+                }
+                else
+                {
+                    string[] entries = line.Split(",");
+                    player.Name = entries[0];
+                    player.EXP = Convert.ToInt32(entries[1]);
+                    player.Gold = Convert.ToInt32(entries[2]);
+                    player.IsAlive = Convert.ToBoolean(entries[3]); 
+                }
             }
             return player;
         }
